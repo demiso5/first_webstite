@@ -1,0 +1,332 @@
+@charset "utf-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Bagel+Fat+One&display=swap');
+*{
+    margin:0;  /*마진 값 리셋*/ 
+    padding:0;  /*패딩 값 리셋*/ 
+    box-sizing:border-box; /*박스 크기를 지정한 값으로 계산*/ 
+}
+
+/* container 영역 */
+#container{
+    width:1200px;
+    margin:0 auto;
+}
+a{
+    text-decoration: none;
+}
+ul{
+    list-style-type: none;
+}
+/* header 영역(로고+네비게이션) */
+header{
+    width:100%;
+    height:100px;
+    background-color: rgb(187, 215, 122);
+}
+
+/* 로고 영역 */
+#logo{
+    float:left;
+    width:250px;
+    height:100px;
+    padding-left:20px;
+    line-height:100px;  /*로고의 높이 설정(행간설정)*/
+}
+#logo h1{
+    font-family: 'Bagel Fat One', cursive;
+    font-size:35px;
+    font-weight:700;
+    color:white;
+    text-shadow: 0 -3px 0 #222;
+}
+#logo a{
+    text-decoration: none;
+}
+/* 네비게이션 영역 */
+nav{
+    float:right;
+    width:900px;
+    height:100px;
+    padding-top:40px; 
+}
+#topmenu{
+    height:60px;   
+}
+/* 메인 메뉴에 대한 서식 */
+#topmenu > li{
+    float:left; /* 항목들에게 대해 왼쪽으로 정렬*/
+    position:relative; /* 메뉴 항목의 위치를 상대적으로 설정(이유: 서브메뉴를 absolute를 사용하기 위해)*/
+}
+#topmenu > li > a {
+    display:block;
+    color:#fff;
+    font-weight: 600;
+    text-shadow:0 1px #8fc5e5;
+    padding: 20px 55px;
+}
+#topmenu > li> a > span{
+    font-size:0.5em;
+}
+#topmenu > li > a:hover{
+    color:#000;
+    background-color: #c1dff0;
+}
+
+/* 하위 메뉴에 대한 서식 */
+#topmenu > li > ul {
+    display: none; /*서브메뉴 보이지 않게 조정*/
+    position:absolute;
+    width:195px;
+    background-color:rgba(255, 255, 255, 0.5);
+    margin:0;
+}
+
+#topmenu > li > ul > li{
+    padding:10px 10px 10px 30px;
+}
+
+#topmenu > li > ul > li > a{
+   font: size 14px;
+   padding: 10px;
+   width:160px;
+   color:black;
+}
+
+#topmenu > li:hover > ul {
+    display: block;
+    z-index:1;
+}
+
+#topmenu > li > ul > li > a:hover{
+   color:red;
+   font-weight:bolder;
+}
+/********************/
+/* 이미지 슬라이드 쇼 */
+/********************/
+
+#slideshow{
+    clear:both;
+    width:100%;
+    height:300px;
+    overflow:hidden;
+    position:relative; 
+}
+
+#slides{
+    position:absolute;
+    height:100%;
+}
+#slides > img{
+    float:left;
+    width:100%;
+}
+
+button{
+    position:absolute;
+    height:100%;
+    top:0;
+    border:none;
+    padding: 20px;
+    background-color: transparent;
+    color:#000;
+    font-size:24px;
+    font-weight: 800;
+    opacity: 0.5;
+}
+
+button:hover{
+    background-color:#222;
+    color:#fff;
+    opacity:0.6;   
+    cursor:pointer;  /*커서 모양을 손가락 모양으로 바꿈*/
+}
+
+button:focus{
+    outline:none;  /*버튼에 초점이 가면 테두리를 없앰*/
+}
+
+#prev{
+    left: 0;
+}
+
+#next{
+    right:0;
+}
+
+/********************/
+/* contents 영역(탭 메뉴 + 퀵 링크 영역) */
+/********************/
+
+#contents{
+    width:100%;
+    height:300px;
+    margin-top:20px;
+}
+
+/********************/
+/* 탭 메뉴 영역 */
+/********************/
+
+#tapmenu{
+    float:left; /* 왼쪽으로 정렬*/
+    width:600px; /* 텝 메뉴의 너비*/
+    height:100%; /* 왼쪽으로 정렬*/
+    margin-top:10px;
+}
+
+#tapmenu input[type="radio"]{
+    display:none;
+}
+
+#tapmenu label{
+    display:inline-block;
+    margin:0 0;
+    padding:15px 25px;
+    color:#aaa;
+    text-align:center;
+    font-weight: 800;
+    border:1px solid transparent;
+}
+
+#tapmenu label:hover{
+    color:black;
+    cursor:pointer;
+}
+
+#tapmenu input:checked + label{
+    color:red;
+    border: 1px solid #ddd;
+    background-color: #eee;
+}
+
+/* 탭에 대한 내용 스타일 적용 */
+.tabcontent{
+    display:none;
+    padding:20px 0 0;    
+    border-top: 1px solid #ddd;
+}
+
+.tabcontent h2{
+    display:none;
+}
+
+#notice ul{
+    list-style: disc;
+    margin-left: 30px;
+}
+
+#notice ul li{
+    font-size:1em;
+    line-height: 2.5;
+}
+
+#gallary  ul li{
+    display: inline;  /* 탭의 내용을 가로로 보이게 함*/
+}
+
+#tab1:checked ~ #notice,
+#tab2:checked ~ #gallary{
+    display:block;
+}
+
+/********************/
+/* 퀵 링크 영역 */
+
+#links{
+    float:left;
+    width:600px;
+    height:100%;
+    margin-top:20px;
+}
+
+#links ul{
+    padding:0;
+    overflow:hidden;
+}
+#links ul li{
+    float:left;
+    width: 33%;
+    text-align:center;
+    margin:10px, 0;
+}
+
+#links ul li span{
+    display:block;
+    margin:0 auto;
+    width:150px;
+    height:150px;
+    border:1px solid #ddd;
+    border-radius:50%;
+    line-height:150px; /* 퀵 링크의 높이와 같게 설정(수직으로 가운데 위치)*/
+}
+#quick-icon1{
+    background-image: url('/images/icon-1.jpg');
+}
+#quick-icon2{
+    background-image: url('/images/icon-2.jpg');
+}
+#quick-icon3{
+    background-image: url('/images/icon-3.jpg');
+}
+
+#links ul li a p{
+    margin-top: 15px;
+    font-weight:600;
+    color:rgb(74, 72, 72);
+}
+/********************/
+/* footer 영역 */
+
+footer{
+    clear:both;
+    width:100%;
+    height:100px;
+    border-top:2px solid #222;
+}
+#bottommenu{
+    width: 100%;
+    height:20px;
+    position:relative;
+}
+#bottommenu ul{
+    margin-top:15px;
+}
+#bottommenu ul li{
+    display: inline-block;
+    margin-left:5px;
+    padding: 5px 2%;
+    border-right:1px solid #a49c9c;
+}
+#bottommenu ul li:last-child{
+    border-right:none;
+}
+#bottommenu ul li a, #bottommenu ul li a:visited{
+    font-size: 15px;
+    color:#aaa
+}
+
+#sns{
+    position:absolute;
+    right:0;
+    bottom: -20px;
+}
+#sns ul li{
+    border:none;
+    padding:5px;
+}
+
+#addr{
+    clear:left;
+    margin-top:25px;
+    margin-left:20px;
+}
+#addr p{
+    font-size:14px;
+    color:#aaa;
+    margin-left:3px;
+}
+#addr p{
+    font-size: 17px;
+}
